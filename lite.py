@@ -76,10 +76,10 @@ def Calm():
             song = track['id']
             print(song)
 
-Happy()
-Sad()
-Angry()
-Calm()
+#Happy()
+#Sad()
+#Angry()
+#Calm()
 lengths = {
     "Happy": len(happy),
     "Sad": len(sad),
@@ -87,19 +87,22 @@ lengths = {
     "Calm": len(calm)
 }
 
-all_lens = happy+sad+angry+calm
-print(all_lens)
+#all_lens = happy+sad+angry+calm
+#print(all_lens)
 
-average = sum(range(len(all_lens)))/len(all_lens)
+#average = sum(range(len(all_lens)))/len(all_lens)
 
-print(average)
+#print(average)
 
-mostinfluential = max(lengths,key=lengths.get)
+#mostinfluential = max(lengths,key=lengths.get)
 
-print(mostinfluential)
+#print(mostinfluential)
 
-SpotifyLibrary = {"HappySongs": happy, "SadSongs": sad,"AngrySongs": angry,"CalmSongs": calm}
+#SpotifyLibrary = {"HappySongs": happy, "SadSongs": sad,"AngrySongs": angry,"CalmSongs": calm}
 
-import json
-with open('secrettest.json', 'w', encoding='utf-8') as f:
-    json.dump(SpotifyLibrary, f, ensure_ascii=False, indent=4)
+def Hello():
+    print("hello worldsssss")
+
+#import json
+#with open('secrettest.json', 'w', encoding='utf-8') as f:
+    #json.dump(SpotifyLibrary, f, ensure_ascii=False, indent=4)

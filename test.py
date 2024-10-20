@@ -36,10 +36,14 @@ st.markdown(
 )
 with st.form("my_form"):
     st.write("Inside the form")
-    slider_val = st.slider("Form slider")
-    checkbox_val = st.checkbox("Form checkbox")
-
+    link = str(st.text_input(label="Paste here your Spotify On Repeat link!",max_chars=100))
+    print(link)
     # Every form must have a submit button.
     submitted = st.form_submit_button("Submit")
     if submitted:
-        lite.Hello()
+        # check this is a real spotify link!
+        if (len(link)< 80 or link[0:45] != "https://open.spotify.com/playlist/37i9dQZF1Ep"):
+            st.error("Error you inserted the wrong playlist or didn't write anything, try again!")
+        else:
+            uri = link[34:56]
+            lite.lite.usage(uri)

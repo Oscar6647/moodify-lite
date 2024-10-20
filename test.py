@@ -46,4 +46,5 @@ with st.form("my_form"):
             st.error("Error you inserted the wrong playlist or didn't write anything, try again!")
         else:
             uri = link[34:56]
+            print(uri)
             lite.lite.usage(uri)

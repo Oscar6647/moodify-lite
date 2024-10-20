@@ -8,13 +8,12 @@ load_dotenv("env\.env")
 global happy, sad, angry, calm
 
 client_ID= os.getenv("ID")
-print(client_ID)
 client_SECRET= os.getenv("SECRET")
 redirect_url='http://www.google.com'
 
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_ID, client_secret= client_SECRET))
-
+trackta = []
 happy=[]
 sad = []
 angry = []
@@ -22,60 +21,52 @@ calm = []
 class lite:
     def Happy(uri):
         #Grabs ID for Liked Songs
-        print ('\n', "Grabbing the on repeat songs id")
+        print ('\n', "Grabbing the Happy songs on repeat songs id")
         results = sp.playlist(uri)
         for idx, item in enumerate(results['tracks']['items']):
-            track = item['track']
-            metrics=sp.audio_features(track['id'])
+            trackta.append(item['track']['id'])
+        for idx, item in enumerate(trackta):
+            metrics=sp.audio_features(trackta[idx])
             if(metrics[0]['valence']>0.5 and metrics[0]['energy']>0.5 ):
-                print(idx," ",track['name']," ",track['id']," ","Valence: ",metrics[0]['valence'],"Energy: ",metrics[0]['energy'])
-                happy.append(track['id'])if track['id'] not in happy else happy
-                song = track['id']
-                print(song)
+                    happy.append(trackta[idx])if trackta[idx] not in happy else happy
 
     def Sad(uri):
         #Grabs ID for Liked Songs
-        print ('\n', "Grabbing the on repeat songs id")
+        print ('\n', "Grabbing the Sad songs on repeat songs id")
         results = sp.playlist(uri)
         for idx, item in enumerate(results['tracks']['items']):
-            track = item['track']
-            metrics=sp.audio_features(track['id'])
+            trackta.append(item['track']['id'])
+        for idx, item in enumerate(trackta):
+            metrics=sp.audio_features(trackta[idx])
             if(metrics[0]['valence']<0.5 and metrics[0]['energy']<0.5 ):
-                print(idx," ",track['name']," ",track['id']," ","Valence: ",metrics[0]['valence'],"Energy: ",metrics[0]['energy'])
-                sad.append(track['id']) if track['id'] not in sad else sad
-                song = track['id']
-                print(song)
+                    happy.append(trackta[idx])if trackta[idx] not in sad else sad
                 
 
 
     
     def Angry(uri):
             #Grabs ID for Liked Songs
-        print ('\n', "Grabbing the on repeat songs id")
+        print ('\n', "Grabbing the Angry on repeat songs id")
         results = sp.playlist(uri)
         for idx, item in enumerate(results['tracks']['items']):
-            track = item['track']
-            metrics=sp.audio_features(track['id'])
+            trackta.append(item['track']['id'])
+        for idx, item in enumerate(trackta):
+            metrics=sp.audio_features(trackta[idx])
             if(metrics[0]['valence']<0.5 and metrics[0]['energy']>0.5 ):
-                print(idx," ",track['name']," ",track['id']," ","Valence: ",metrics[0]['valence'],"Energy: ",metrics[0]['energy'])
-                angry.append(track['id'])if track['id'] not in angry else angry
-                song = track['id']
-                print(song)
+                angry.append(trackta[idx])if trackta[idx] not in angry else angry
 
 
 
     def Calm(uri):
-            #Grabs ID for Liked Songs
-        print ('\n', "Grabbing the on repeat songs id")
+        #Grabs ID for Liked Songs
+        print ('\n', "Grabbing the Calm on repeat songs id")
         results = sp.playlist(uri)
         for idx, item in enumerate(results['tracks']['items']):
-            track = item['track']
-            metrics=sp.audio_features(track['id'])
-            if(metrics[0]['valence']>0.5 and metrics[0]['energy']<0.5 ):
-                print(idx," ",track['name']," ",track['id']," ","Valence: ",metrics[0]['valence'],"Energy: ",metrics[0]['energy'])
-                calm.append(track['id'])if track['id'] not in calm else calm
-                song = track['id']
-                print(song)
+            trackta.append(item['track']['id'])
+        for idx, item in enumerate(trackta):
+            metrics=sp.audio_features(trackta[idx])
+            if(metrics[0]['valence']<0.5 and metrics[0]['energy']>0.5 ):
+                calm.append(trackta[idx])if trackta[idx] not in calm else calm
         
     def usage(uri):
         lite.Happy(uri)
@@ -89,7 +80,7 @@ class lite:
             "Calm": len(calm)
         }
         all_lens = happy+sad+angry+calm
-        print(all_lens)
+        #print(all_lens)
 
         average = sum(range(len(all_lens)))/len(all_lens)
 

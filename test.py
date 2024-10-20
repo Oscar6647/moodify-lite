@@ -45,6 +45,9 @@ with st.form("my_form"):
         if (len(link)< 80 or link[0:45] != "https://open.spotify.com/playlist/37i9dQZF1Ep"):
             st.error("Error you inserted the wrong playlist or didn't write anything, try again!")
         else:
-            uri = link[34:56]
-            print(uri)
-            lite.lite.usage(uri)
+            with st.spinner('Analyzing your Spotify On Repeat...'):
+                uri = link[34:56]
+                print(uri)
+                lite.lite.usage(uri)
+            st.success("Check out this awesome Results!")
+            

@@ -10,7 +10,7 @@ global happy, sad, angry, calm
 client_ID= os.getenv("ID")
 print(client_ID)
 client_SECRET= os.getenv("SECRET")
-redirect_url='http://localhost:9000'
+redirect_url='https://google.com'
 
 scope= 'user-library-read','playlist-read-private','playlist-read-collaborative'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_ID, client_secret= client_SECRET, redirect_uri=redirect_url, scope=scope))
@@ -99,7 +99,7 @@ class lite:
 
         print(mostinfluential)
 
-        st.write(f"On Average your Ruler Cuadrant Feeling (based on your On Repeat List is: {mostinfluential}")
+        st.write(f"On Average your Ruler Cuadrant Feeling (based on your On Repeat List) is: {mostinfluential}")
 #Happy()
 #Sad()
 #Angry()

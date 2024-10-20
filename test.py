@@ -4,8 +4,8 @@ import numpy as n
 import lite as lite
 
 st.set_page_config(
-    page_title="test",
-    page_icon="👋",
+    page_title="Moodify-lite",
+    page_icon="🎵",
 )
 
 st.write("# Moodify-Lite")
@@ -49,5 +49,6 @@ with st.form("my_form"):
                 uri = link[34:56]
                 print(uri)
                 lite.lite.usage(uri)
-            st.success("Check out this awesome Results!")
-            
+            st.success("Check out this awesome Results! Please fill out one of our feeback forms!")
+            st.link_button("Fill out the Feedback Form! (English)","https://forms.gle/bNH7LR5AXfWEodNc8")
+            st.link_button("Fill out the Feedback Form! (Español)","https://forms.gle/qWCB8XeeC6vMmKd87")

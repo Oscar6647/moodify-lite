@@ -99,7 +99,15 @@ class lite:
 
         print(mostinfluential)
 
-        st.write(f"On Average your Ruler Cuadrant Feeling (based on your On Repeat List) is: {mostinfluential}")
+        st.write(f"On Average your Ruler Cuadrant Feeling (based on your On Repeat List) is: {mostinfluential}") 
+        if (mostinfluential == "Happy"):
+            st.image("happy loc.png", caption= "Your Results Ilustrated!")
+        elif (mostinfluential == "Sad"):
+            st.image("sad loc.png",caption="Your Results Ilustrated!")
+        elif (mostinfluential == "Calm"):
+            st.image("calm loc.png", caption="Your Results Ilustrated!")
+        else:
+            st.image("angry loc.png", caption= "Your Results Ilustrated!")
 #Happy()
 #Sad()
 #Angry()

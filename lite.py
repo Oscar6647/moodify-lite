@@ -1,5 +1,5 @@
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+from spotipy.oauth2 import SpotifyClientCredentials
 import os
 from dotenv import load_dotenv
 import streamlit as st
@@ -12,8 +12,8 @@ print(client_ID)
 client_SECRET= os.getenv("SECRET")
 redirect_url='http://www.google.com'
 
-scope= 'user-library-read','playlist-read-private','playlist-read-collaborative'
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_ID, client_secret= client_SECRET, redirect_uri=redirect_url, scope=scope))
+
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_ID, client_secret= client_SECRET))
 
 happy=[]
 sad = []

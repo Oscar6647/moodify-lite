@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as n
-import env.lite as lite
+import lite as lite
 
 st.set_page_config(
     page_title="test",

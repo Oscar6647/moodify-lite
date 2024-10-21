@@ -2,6 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as n
 import lite as lite
+# Disable the submit button after it is clicked
+def disable():
+    st.session_state.disabled = True
+
+# Initialize disabled for form_submit_button to False
+if "disabled" not in st.session_state:
+    st.session_state.disabled = False
 
 st.set_page_config(
     page_title="Moodify-lite",
@@ -39,7 +46,7 @@ with st.form("my_form"):
     link = str(st.text_input(label="Paste here your Spotify On Repeat link!",max_chars=100))
     print(link)
     # Every form must have a submit button.
-    submitted = st.form_submit_button("Submit")
+    submitted = st.form_submit_button("Submit", on_click=disable, disabled=st.session_state.disabled)
     if submitted:
         # check this is a real spotify link!
         if (len(link)< 45 or link[0:45] != "https://open.spotify.com/playlist/37i9dQZF1Ep"):

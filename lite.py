@@ -36,7 +36,7 @@ class lite:
                     sad.append(trackta[idx])if trackta[idx] not in sad else sad
             elif(metrics[0]['valence']<0.5 and metrics[0]['energy']>0.5 ):
                 angry.append(trackta[idx])if trackta[idx] not in angry else angry
-            elif(metrics[0]['valence']<0.5 and metrics[0]['energy']>0.5 ):
+            elif(metrics[0]['valence']>0.5 and metrics[0]['energy']<0.5 ):
                 calm.append(trackta[idx])if trackta[idx] not in calm else calm
         
     def usage(uri):
